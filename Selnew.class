@@ -1,0 +1,39 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Selnew {
+            public static void main(String[] args) throws InterruptedException {
+           // Set the path of the ChromeDriver executable
+           System.setProperty("webdriver.chrome.driver", "C:/Users/mouni/Downloads/chromedriver_win32/chromedriver.exe");
+     
+           // Create a new instance of the Chrome driver
+           WebDriver driver = new ChromeDriver();
+     
+           // Navigate to the Facebook login page
+           driver.get("https://www.facebook.com/login");
+     
+           // Find the email and password fields and enter your login credentials
+           WebElement emailField = driver.findElement(By.name("email"));
+           emailField.sendKeys("your_email_address");
+           
+           WebElement passwordField = driver.findElement(By.name("pass"));
+           passwordField.sendKeys("your_password");
+           
+           // Submit the login form
+           passwordField.sendKeys(Keys.RETURN);
+     
+           // Wait for the page to load and check if login was successful
+           Thread.sleep(5000);
+           if (driver.getCurrentUrl().contains("facebook.com")) {
+              System.out.println("Login successful!");
+           } else {
+              System.out.println("Login failed!");
+           }
+     
+           // Close the browser window
+           driver.quit();
+        }
+     }   
